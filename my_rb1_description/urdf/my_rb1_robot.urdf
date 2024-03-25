@@ -1,5 +1,24 @@
 <?xml version="1.0"?>
 <robot name="robot">
+<!--Gazebo Color Tags-->
+    <gazebo reference="base_link">
+        <material>Gazebo/Black</material>
+    </gazebo>
+    <gazebo reference="base_footprint">
+        <material>Gazebo/Black</material>
+    </gazebo>
+    <gazebo reference="front_caster">
+        <material>Gazebo/Grey</material>
+    </gazebo>
+    <gazebo reference="back_caster">
+        <material>Gazebo/Grey</material>
+    </gazebo>
+    <gazebo reference="left_wheel">
+        <material>Gazebo/Red</material>
+    </gazebo>
+    <gazebo reference="right_wheel">
+        <material>Gazebo/Red</material>
+    </gazebo>
 
 	<!-- Base Footprint -->
 	<link name="base_footprint">
