@@ -21,13 +21,13 @@
     <!-- Spawn your robot model -->
     <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-urdf -model my_rb1_robot -param robot_description -x -0.5 -y -1.3 -z 0"/> <!-- Adjust the model name and position -->
 
-  <!-- send fake joint values -->
-  <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui"> </node>
+    <!-- send fake joint values -->
+    <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui"> </node>
 
-  <!-- Combine joint values -->
-  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"> </node>
+     <!-- Combine joint values -->
+     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"> </node>
 
-  <!-- Show in Rviz   -->
-  <!-- <node name="rviz" pkg="rviz" type="rviz"> </node> -->
+    <!-- Show in Rviz   -->
+     <node name="rviz" pkg="rviz" type="rviz"> </node>
 
 </launch>
