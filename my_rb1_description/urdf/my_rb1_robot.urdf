@@ -23,7 +23,7 @@
 	<!-- Base Footprint -->
 	<link name="base_footprint">
 		<inertial>
-			<mass value="15" />
+			<mass value="21" />
 			<origin xyz="0 0 0" rpy="0 0 0" />
 			<inertia ixx="0.0001" ixy="0" ixz="0" iyy="0.0001" iyz="0" izz="0.0001" />
 		</inertial>
@@ -44,11 +44,11 @@
 
 	<!-- Base Link -->
 	<link name="base_link">
-		<inertial>
+		<!-- <inertial>
 			<mass value="5" />
 			<origin xyz="0 0 0.3" rpy="0 0 0" />
 			<inertia ixx="0.0001" ixy="0" ixz="0" iyy="0.0001" iyz="0" izz="0.0001" />
-		</inertial>
+		</inertial> -->
 		<visual>
 			<geometry>
 				<cylinder length="0.3" radius="0.25"/>
@@ -72,18 +72,18 @@
             <inertia ixx="0.0001" ixy="0" ixz="0" iyy="0.0001" iyz="0" izz="0.0001"/>
         </inertial>
 		<visual>
-			<origin rpy="1.5708 0 0" xyz="0 -0.06 0" />
+			<origin rpy="-1.5708 0 0" xyz="0 0 0" />
 			<geometry>
-				<cylinder length="0.025" radius="0.05"/>
+				<cylinder length="0.05" radius="0.05"/>
 			</geometry>
 			<material name="Red">
-     			        <color rgba="1 0 0 1" />
-     			</material>
+     			<color rgba="1 0 0 1" />
+     		</material>
 		</visual>
 		<collision>
-			<origin rpy="1.5708 0 0" xyz="0 -0.06 0" />
+			<origin rpy="-1.5708 0 0" xyz="0 0 0" />
 			<geometry>
-				<cylinder length="0.025" radius="0.05"/>
+				<cylinder length="0.05" radius="0.05"/>
 			</geometry>
 		</collision>
 	</link>
@@ -96,18 +96,18 @@
             <inertia ixx="0.0001" ixy="0" ixz="0" iyy="0.0001" iyz="0" izz="0.0001"/>
         </inertial>
 		<visual>
-			<origin rpy="1.5708 0 0" xyz="0 0.06 0" />
+			<origin rpy="1.5708 0 0" xyz="0 0 0" />
 			<geometry>
-				<cylinder length="0.025" radius="0.05"/>
+				<cylinder length="0.05" radius="0.05"/>
 			</geometry>
 			<material name="Red">
-     			        <color rgba="1 0 0 1" />
-     			</material>
+     			<color rgba="1 0 0 1" />
+     		</material>
 		</visual>
 		<collision>
-			<origin rpy="1.5708 0 0" xyz="0 0.06 0" />
+			<origin rpy="1.5708 0 0" xyz="0 0 0" />
 			<geometry>
-				<cylinder length="0.025" radius="0.05"/>
+				<cylinder length="0.05" radius="0.05"/>
 			</geometry>
 		</collision>
 	</link>
@@ -124,7 +124,7 @@
 		<visual>
 			 <origin rpy="0 0 0" xyz="0 0 0" />
 			<geometry>
-				<sphere radius="0.02"/>
+				<sphere radius="0.04"/>
 			</geometry>
 			<material name="Blue">
      			        <color rgba="0 0 1 1" />
@@ -133,24 +133,24 @@
 		<collision>
 			 <origin rpy="0 0 0" xyz="0 0 0" />
 			<geometry>
-				<sphere radius="0.02"/>
+				<sphere radius="0.04"/>
 			</geometry>
 		</collision>
 
 		<!--CasterWheel-->
 		<visual>
-			<origin rpy="0 0 0" xyz="0 0 -0.0125" />
+			<origin rpy="0 0 0" xyz="0 0 -0.03" />
 			<geometry>
-				<sphere radius="0.0125"/>
+				<sphere radius="0.02"/>
 			</geometry>
 			<material name="Grey">
      			        <color rgba="0.6 0.6 0.6 1" />
      			</material>
 		</visual>
 		<collision>
-			<origin rpy="0 0 0" xyz="0 0 -0.0125" />
+			<origin rpy="0 0 0" xyz="0 0 -0.03" />
 			<geometry>
-				<sphere radius="0.0125"/>
+				<sphere radius="0.02"/>
 			</geometry>
 		</collision>
 	</link>
@@ -167,7 +167,7 @@
 		<visual>
 			<origin xyz="0 0 0" rpy="0 0 0" />
 			<geometry>
-				<sphere radius="0.02"/>
+				<sphere radius="0.04"/>
 			</geometry>
 			<material name="Blue">
      			        <color rgba="0 0 1 1" />
@@ -176,49 +176,51 @@
 		<collision>
 			<origin xyz="0 0 0" rpy="0 0 0" />
 			<geometry>
-				<sphere radius="0.02"/>
+				<sphere radius="0.04"/>
 			</geometry>
 		</collision>
 
 		<!--CasterWheel-->
 		<visual>
-			<origin xyz="0 0 -0.0125" rpy="0 0 0" />
+			<origin xyz="0 0 -0.03" rpy="0 0 0" />
 			<geometry>
-				<sphere radius="0.0125"/>
+				<sphere radius="0.02"/>
 			</geometry>
 			<material name="Grey">
      			        <color rgba="0.6 0.6 0.6 1" />
      			</material>
 		</visual>
 		<collision>
-			<origin xyz="0 0 -0.0125" rpy="0 0 0" />
+			<origin xyz="0 0 -0.03" rpy="0 0 0" />
 			<geometry>
-				<sphere radius="0.0125"/>
+				<sphere radius="0.02"/>
 			</geometry>
 		</collision>
 	</link>
 
 	<!-- Front Laser -->
-	<link name="front_laser">
+	<link name="front_laser">   
         <inertial>
             <mass value="1" />
             <origin xyz="0 0 0" rpy="0 0 0" />
             <inertia ixx="0.0001" ixy="0" ixz="0" iyy="0.0001" iyz="0" izz="0.0001"/>
         </inertial>
 		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0" />
 			<geometry>
-				<box size="0.05 0.05 0.01"/>
+				<cylinder radius="0.025" length="0.05"/>
 			</geometry>
 		</visual>
 		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0" />
 			<geometry>
-				<box size="0.05 0.05 0.01"/>
+				<cylinder radius="0.025" length="0.05"/>				
 			</geometry>
 		</collision>
 	</link>
 
 	<!-- Joints -->
-	<joint name="base_to_base_footprint" type="continuous">
+	<joint name="base_to_base_footprint" type="fixed">
 		<parent link="base_link"/>
 		<child link="base_footprint"/>
 		<origin rpy="0 0 0" xyz="0.0 0.0 -0.15"/>
@@ -231,7 +233,7 @@
 		<child link="right_wheel"/>
 		<origin rpy="0 0 0" xyz="0.0 -0.2 -0.15"/>
 		<axis xyz="0 1 0"/>
-		<joint_properties damping="0.0" friction="0.0" />
+		<joint_properties damping="0.0" friction="1.0" />
 	</joint>
 	
 	<joint name="base_to_left_wheel" type="continuous">
@@ -239,20 +241,20 @@
 		<child link="left_wheel"/>
 		<origin rpy="0 0 0" xyz="0.0 0.2 -0.15"/>
 		<axis xyz="0 1 0"/>
-		<joint_properties damping="0.0" friction="0.0" />
+		<joint_properties damping="0.0" friction="1.0" />
 	</joint>
 
 	<joint name="base_to_front_caster" type="fixed">
 		<parent link="base_link"/>
 		<child link="front_caster"/>
-		<origin rpy="0 0 0" xyz="-0.1 0.0 -0.15"/>
+		<origin rpy="0 0 0" xyz="0.1 0.0 -0.15"/>
 		<joint_properties damping="0.0" friction="0.0" />
 	</joint>
 
 	<joint name="base_to_back_caster" type="fixed">
 		<parent link="base_link"/>
 		<child link="back_caster"/>
-		<origin rpy="0 0 0" xyz="0.1 0.0 -0.15"/>
+		<origin rpy="0 0 0" xyz="-0.1 0.0 -0.15"/>
 		<joint_properties damping="0.0" friction="0.0" />
 	</joint>
 
@@ -282,7 +284,7 @@
 
     <!--Plugin Laser-Scan-->
     <gazebo reference="front_laser">
-        <sensor type="ray" name="head_hokuyo_sensor">
+        <sensor type="ray" name="head_hokuyo_sensor">            
             <pose>0 0 0 0 0 0</pose>
             <visualize>true</visualize>
             <update_rate>20</update_rate>
@@ -296,7 +298,7 @@
                     </horizontal>
                 </scan>
                 <range>
-                    <min>0.20</min>
+                    <min>0.30</min>
                     <max>10.0</max>
                     <resolution>0.01</resolution>
                 </range>
@@ -308,7 +310,7 @@
             </ray>
             <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_laser.so">
                 <topicName>/scan</topicName>
-                <frameName>sensor_laser</frameName>
+                <frameName>front_laser</frameName>
             </plugin>
         </sensor>
     </gazebo>
