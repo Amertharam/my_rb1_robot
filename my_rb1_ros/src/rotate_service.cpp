@@ -2,13 +2,13 @@
 #include "my_rb1_ros/Rotate.h"
 #include "nav_msgs/Odometry.h"
 #include "geometry_msgs/Twist.h"
-#include <asm-generic/errno.h>
 #include <cmath>
 
 ros::Publisher vel_pub;
 double current_angle = 0.0;
 bool first_odom = true;
 double initial_angle = 0.0;
+const double MAX_ANGULAR_VELOCITY = 0.5; 
 
 void quaternionToEuler(double x, double y, double z, double w, double& roll, double& pitch, double& yaw) {
     // Convert quaternion to Euler angles
@@ -40,36 +40,27 @@ void odomCallback(const nav_msgs::Odometry::ConstPtr& msg) {
 }
 
 bool rotateCallback(my_rb1_ros::Rotate::Request &req, my_rb1_ros::Rotate::Response &res) {
+    ROS_INFO("Service Requested: Rotate Robot");
+    
     double target_angle = (req.degrees * M_PI / 180.0) + current_angle;
     geometry_msgs::Twist vel_msg;
     ros::Rate rate(10);
     
-    // while (ros::ok() && std::abs(target_angle - current_angle) > 0.01) {
-    //     vel_msg.angular.z = 0.1;
-    //     vel_pub.publish(vel_msg);
-    //     ros::spinOnce();
-    //     rate.sleep();
-    // }
-
-    if (target_angle >= 0) {
-        while (ros::ok() && std::abs(target_angle - current_angle) > 0.01) {
-        vel_msg.angular.z = 0.1;
+    while (ros::ok() && std::abs(target_angle - current_angle) > 0.01) {
+        if (target_angle >= 0) {
+            vel_msg.angular.z = std::min(0.3, MAX_ANGULAR_VELOCITY); 
+        } else {
+            vel_msg.angular.z = std::max(-0.3, -MAX_ANGULAR_VELOCITY);
+        }
         vel_pub.publish(vel_msg);
         ros::spinOnce();
         rate.sleep();
-    }
-    }
-    else {
-        while (ros::ok() && std::abs(target_angle - current_angle) > 0.01) {
-        vel_msg.angular.z = -0.1;
-        vel_pub.publish(vel_msg);
-        ros::spinOnce();
-        rate.sleep();
-    }
     }
     
     vel_msg.angular.z = 0.0;
     vel_pub.publish(vel_msg);
+    
+    ROS_INFO("Service Completed: Rotation completed successfully");
     res.result = "Rotation completed successfully";
     return true;
 }
@@ -81,7 +72,9 @@ int main(int argc, char **argv) {
     vel_pub = n.advertise<geometry_msgs::Twist>("/cmd_vel", 100);
     ros::Subscriber odom_sub = n.subscribe("/odom", 100, odomCallback);
     ros::ServiceServer service = n.advertiseService("/rotate_robot", rotateCallback);
-
+    
+    ROS_INFO("Service Ready: Rotate Robot Service is ready to receive requests");
+    
     ros::spin();
     return 0;
 }
